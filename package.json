@@ -1,0 +1,20 @@
+{
+  "name": "gulp-component",
+  "version": "0.0.1",
+  "description": "Component build plugin for Gulp",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "keywords": [
+    "gulp",
+    "cli",
+    "buildtool"
+  ],
+  "author": "Evan You",
+  "license": "MIT",
+  "dependencies": {
+    "component-builder": "~0.10.0",
+    "event-stream": "~3.0.20"
+  }
+}
