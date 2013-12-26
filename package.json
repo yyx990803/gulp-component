@@ -9,7 +9,8 @@
   "keywords": [
     "gulp",
     "cli",
-    "buildtool"
+    "buildtool",
+    "gulpplugin"
   ],
   "author": "Evan You",
   "license": "MIT",
