@@ -1,5 +1,4 @@
 # gulp-component [![Build Status](https://travis-ci.org/yyx990803/gulp-component.png?branch=master)](https://travis-ci.org/yyx990803/gulp-component)
-
 > Component builder plugin for gulp
 
 ## Usage
@@ -94,3 +93,7 @@ Alias for `component({ only: 'scripts' })
 ### component.styles([options])
 
 Alias for `component({ only: 'styles' })
+
+## License
+
+MIT
