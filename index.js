@@ -128,14 +128,11 @@ function component (opt) {
     return stream
 }
 
-component.scripts = function (opt) {
-    opt.only = 'scripts'
-    return component(opt)
-}
-
-component.styles = function (opt) {
-    opt.only = 'styles'
-    return component(opt)
-}
+assetTypes.forEach(function (type) {
+    component[type] = function (opt) {
+        opt.only = type
+        return component(opt)
+    }
+})
 
 module.exports = component

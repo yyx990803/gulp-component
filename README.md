@@ -14,6 +14,22 @@ gulp.task('component', function () {
         }))
         .pipe(gulp.dest('./build'))
 })
+
+// you can trigger rebuild for certain types only when watching:
+gulp.task('watch', function () {
+    gulp.watch('./src/**/*.js', function () {
+        gulp.src('./component.json')
+            .pipe(component.scripts({
+                standalone: true
+            }))
+            .pipe(gulp.dest('./build'))
+    })
+    gulp.watch('./css/**/*.css', function () {
+        gulp.src('./component.json')
+            .pipe(component.styles())
+            .pipe(gulp.dest('./build'))
+    })
+})
 ```
 
 ## API
@@ -30,7 +46,7 @@ gulp.task('component', function () {
     Type: `String` or `Array`  
     Default: `undefined`
 
-    Build only certain types of assets. Available asset types are: `'scripts'`, `'styles'`, `'images'`, `'fonts'`, `'files'`.
+    Build only certain types of assets. Available asset types are: `'scripts'`, `'styles'`, `'images'`, `'fonts'`, `'files'`. Each of these types has an alias to create a stream that builds that type only, e.g. `component.scripts([options])`
 
 - #### options.configure(builder)
     Type: `Function`  
@@ -85,14 +101,6 @@ gulp.task('component', function () {
     Default: `false`
 
     Exclude require from build. Ignored when `options.standalone` is truthy.
-
-### component.scripts([options])
-
-Alias for `component({ only: 'scripts' })
-
-### component.styles([options])
-
-Alias for `component({ only: 'styles' })
 
 ## License
 
