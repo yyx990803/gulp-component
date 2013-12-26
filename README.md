@@ -1,4 +1,4 @@
-# gulp-component [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
+# gulp-component [![Build Status](https://travis-ci.org/yyx990803/gulp-component.png?branch=master)](https://travis-ci.org/yyx990803/gulp-component)
 
 > Component builder plugin for gulp
 
