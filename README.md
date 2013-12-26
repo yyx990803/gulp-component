@@ -1,4 +1,4 @@
-# gulp-component [![Build Status](https://travis-ci.org/yyx990803/gulp-component.png?branch=master)](https://travis-ci.org/yyx990803/gulp-component)
+# gulp-component [![NPM version](https://badge.fury.io/js/gulp-component.png)](http://badge.fury.io/js/gulp-component) [![Build Status](https://travis-ci.org/yyx990803/gulp-component.png?branch=master)](https://travis-ci.org/yyx990803/gulp-component)
 > Component builder plugin for gulp
 
 ## Usage
