@@ -4,7 +4,7 @@
   "description": "Component build plugin for Gulp",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "mocha --reporter spec"
   },
   "keywords": [
     "gulp",
@@ -15,6 +15,11 @@
   "license": "MIT",
   "dependencies": {
     "component-builder": "~0.10.0",
-    "event-stream": "~3.0.20"
+    "event-stream": "~3.0.20",
+    "gulp-util": "~2.2.0"
+  },
+  "devDependencies": {
+    "should": "~2.1.1",
+    "mocha": "~1.16.2"
   }
 }
