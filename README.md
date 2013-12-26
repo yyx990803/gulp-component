@@ -1,4 +1,4 @@
-# gulp-component
+# gulp-component [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
 > Component builder plugin for gulp
 
@@ -23,7 +23,7 @@ gulp.task('component', function () {
 
 - #### options.name
     Type: `String`  
-    Default: `build`
+    Default: `'build'`
 
     The filename for built files.
 
@@ -31,7 +31,7 @@ gulp.task('component', function () {
     Type: `String` or `Array`  
     Default: `undefined`
 
-    Build only certain types of assets. Available asset types are: `scripts`, `styles`, `images`, `fonts`, `files`.
+    Build only certain types of assets. Available asset types are: `'scripts'`, `'styles'`, `'images'`, `'fonts'`, `'files'`.
 
 - #### options.configure(builder)
     Type: `Function`  
@@ -47,7 +47,7 @@ gulp.task('component', function () {
 
 - #### options.out
     Type: `String`  
-    Default: `build`
+    Default: `'build'`
 
     The directory to link/copy assets (`images`, `fonts` and `files`) to.
 
