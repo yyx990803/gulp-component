@@ -1,4 +1,4 @@
-var es         = require('event-stream'),
+var map        = require('map-stream'),
     File       = require('vinyl'),
     Builder    = require('component-builder'),
     template   = require('fs').readFileSync(__dirname + '/template.js', 'utf-8'),
@@ -65,7 +65,7 @@ function component (opt) {
 
     opt = opt || {}
 
-    var stream = es.map(function (file, cb) {
+    var stream = map(function (file, cb) {
 
         var builder = new Builder(file.base),
             filename = opt.name || 'build'
