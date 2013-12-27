@@ -1,6 +1,6 @@
 var component = require('../'),
     fs        = require('fs'),
-    gutil     = require('gulp-util'),
+    File      = require('vinyl'),
     should    = require('should')
 
 describe('gulp-component', function () {
@@ -93,7 +93,7 @@ function testStream (stream, assertions, done) {
         fileCount.should.equal(assertions.length)
         done()
     })
-    stream.write(new gutil.File({
+    stream.write(new File({
         path: './test/fixture/component.json',
         cwd: './test/',
         base: './test/fixture/',

@@ -1,5 +1,5 @@
 var es         = require('event-stream'),
-    gutil      = require('gulp-util'),
+    File       = require('vinyl'),
     Builder    = require('component-builder'),
     template   = require('fs').readFileSync(__dirname + '/template.js', 'utf-8'),
     templateRE = /{{(.+?)}}/g,
@@ -95,7 +95,7 @@ function component (opt) {
                         : obj.require + js
                 }
                 if (js) {
-                    jsFile = new gutil.File({
+                    jsFile = new File({
                         cwd: file.cwd,
                         base: file.base,
                         path: file.base + filename + '.js',
@@ -106,7 +106,7 @@ function component (opt) {
             }
 
             if (builder.config.styles && css) {
-                cssFile = new gutil.File({
+                cssFile = new File({
                     cwd: file.cwd,
                     base: file.base,
                     path: file.base + filename + '.css',
