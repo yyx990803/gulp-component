@@ -3,7 +3,7 @@ var map        = require('map-stream'),
     Builder    = require('component-builder'),
     template   = require('fs').readFileSync(__dirname + '/template.js', 'utf-8'),
     templateRE = /{{(.+?)}}/g,
-    assetTypes = ['scripts', 'styles', 'images', 'fonts', 'files']
+    assetTypes = ['scripts', 'styles', 'images', 'fonts', 'files', 'templates', 'json']
 
 function configure (builder, opt) {
     builder.copyAssetsTo(opt.out || 'build')
@@ -33,6 +33,7 @@ function configure (builder, opt) {
         })
     }
     // ignore file types
+    builder.config._ignore = {}
     if (opt.only) {
         var only = Array.isArray(opt.only)
             ? opt.only
@@ -47,8 +48,9 @@ function configure (builder, opt) {
 
 function ignoreType (builder, opt, type) {
     delete builder.config[type]
+    builder.config._ignore[type] = true
     var deps = builder.config.dependencies,
-        devDeps = builder.config.devDeps
+        devDeps = builder.config.development
     if (deps) {
         for (var key in deps) {
             builder.ignore(key, type)
@@ -78,9 +80,12 @@ function component (opt) {
 
             var js = obj.js.trim(),
                 css = obj.css.trim(),
-                jsFile, cssFile
+                jsFile, cssFile,
+                ignored = builder.config._ignore
 
-            if (builder.config.scripts && js) {
+            if ((!ignored.scripts ||
+                !ignored.templates ||
+                !ignored.json) && js) {
                 if (opt.standalone) {
                     obj.configName = builder.config.name
                     obj.standaloneName = typeof opt.standalone === 'string'
@@ -105,7 +110,7 @@ function component (opt) {
                 }
             }
 
-            if (builder.config.styles && css) {
+            if (!ignored.styles && css) {
                 cssFile = new File({
                     cwd: file.cwd,
                     base: file.base,
