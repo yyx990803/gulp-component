@@ -59,7 +59,8 @@ describe('gulp-component', function () {
                 standalone: 'Test'
             }), [
                 function (file) {
-                    var contents = file.contents.toString()
+                    var contents = file.contents.toString(),
+                        window = {}
                     eval(contents)
                     module.exports.a.should.equal('A')
                     module.exports.b.should.equal('B')
@@ -67,10 +68,10 @@ describe('gulp-component', function () {
                     // test umd exposing on `this`
                     exports = undefined
                     eval(contents)
-                    should.exist(this.Test)
-                    this.Test.a.should.equal('A')
-                    this.Test.b.should.equal('B')
-                    this.Test.c.should.equal('DEP')
+                    should.exist(window.Test)
+                    window.Test.a.should.equal('A')
+                    window.Test.b.should.equal('B')
+                    window.Test.c.should.equal('DEP')
                 }
             ], done)
         })
