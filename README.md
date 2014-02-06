@@ -46,7 +46,7 @@ gulp.task('watch', function () {
     Type: `String` or `Array`  
     Default: `undefined`
 
-    Build only certain types of assets. Available asset types are: `'scripts'`, `'styles'`, `'images'`, `'fonts'`, `'files'`. Each of these types has an alias to create a stream that builds that type only, e.g. `component.scripts([options])`
+    Build only certain types of assets. Available asset types are: `'scripts'`, `'styles'`, `'images'`, `'fonts'`, `'files'`, `'templates'`, `'json'`. Each of these types has an alias to create a stream that builds that type only, e.g. `component.scripts([options])`
 
 - #### options.configure(builder)
     Type: `Function`  
