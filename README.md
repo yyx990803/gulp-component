@@ -3,33 +3,38 @@
 
 ## Usage
 
+Example usage using a Stylus build plugin and watching script and style changes separately:
+
 ``` js
-var gulp = require('gulp'),
-    component = require('gulp-component')
+var gulp      = require('gulp'),
+    component = require('gulp-component'),
+    stylus    = require('component-stylus-plugin')
 
-gulp.task('component', function () {
-    gulp.src('./component.json')
-        .pipe(component({
-            standalone: true   
+gulp.task('scripts', function () {
+    gulp.src('component.json')
+        .pipe(component.scripts({
+            standalone: true
         }))
-        .pipe(gulp.dest('./build'))
+        .pipe(gulp.dest('static/js'))
 })
 
-// you can trigger rebuild for certain types only when watching:
-gulp.task('watch', function () {
-    gulp.watch('./src/**/*.js', function () {
-        gulp.src('./component.json')
-            .pipe(component.scripts({
-                standalone: true
-            }))
-            .pipe(gulp.dest('./build'))
-    })
-    gulp.watch('./css/**/*.css', function () {
-        gulp.src('./component.json')
-            .pipe(component.styles())
-            .pipe(gulp.dest('./build'))
-    })
+gulp.task('styles', function () {
+    gulp.src('component.json')
+        .pipe(component.styles({
+            standalone: true,
+            configure: function (builder) {
+                builder.use(stylus)
+            }
+        }))
+        .pipe(gulp.dest('static/css'))
 })
+
+gulp.task('watch', function () {
+    gulp.watch(['component.json', 'src/**/*.js'], ['scripts'])
+    gulp.watch(['component.json', 'src/**/*.styl'], ['styles'])
+})
+
+gulp.task('default', ['scripts', 'styles'])
 ```
 
 ## API
