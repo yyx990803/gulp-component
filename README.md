@@ -15,18 +15,17 @@ gulp.task('scripts', function () {
         .pipe(component.scripts({
             standalone: true
         }))
-        .pipe(gulp.dest('static/js'))
+        .pipe(gulp.dest('build/js'))
 })
 
 gulp.task('styles', function () {
     gulp.src('component.json')
         .pipe(component.styles({
-            standalone: true,
             configure: function (builder) {
                 builder.use(stylus)
             }
         }))
-        .pipe(gulp.dest('static/css'))
+        .pipe(gulp.dest('build/css'))
 })
 
 gulp.task('watch', function () {
