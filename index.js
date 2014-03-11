@@ -1,7 +1,9 @@
-var map        = require('map-stream'),
+var fs         = require('fs'),
+    map        = require('map-stream'),
     File       = require('vinyl'),
     Builder    = require('component-builder'),
-    template   = require('fs').readFileSync(__dirname + '/template.js', 'utf-8'),
+    template   = fs.readFileSync(__dirname + '/lib/wrapper.js', 'utf-8'),
+    requirejs  = fs.readFileSync(__dirname + '/lib/require.js', 'utf-8'),
     templateRE = /{{(.+?)}}/g,
     assetTypes = ['scripts', 'styles', 'images', 'fonts', 'files', 'templates', 'json']
 
@@ -92,12 +94,14 @@ function component (opt) {
                         ? opt.standalone
                         : builder.config.name
                     js = template.replace(templateRE, function (m, p1) {
-                        return obj[p1]
+                        return p1 === 'require'
+                            ? requirejs
+                            : obj[p1] 
                     })
                 } else {
                     js = opt.noRequire
                         ? js
-                        : obj.require + js
+                        : requirejs + js
                 }
                 if (js) {
                     jsFile = new File({
