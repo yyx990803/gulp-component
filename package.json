@@ -1,6 +1,6 @@
 {
   "name": "gulp-component",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Component build plugin for Gulp",
   "main": "index.js",
   "scripts": {
