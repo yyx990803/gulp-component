@@ -1,4 +1,5 @@
 var fs         = require('fs'),
+    path       = require('path'),
     map        = require('map-stream'),
     File       = require('vinyl'),
     Builder    = require('component-builder'),
@@ -107,7 +108,7 @@ function component (opt) {
                     jsFile = new File({
                         cwd: file.cwd,
                         base: file.base,
-                        path: file.base + filename + '.js',
+                        path: path.join(file.base, filename) + '.js',
                         relative: filename + '.js',
                         contents: new Buffer(js)
                     })
@@ -118,7 +119,7 @@ function component (opt) {
                 cssFile = new File({
                     cwd: file.cwd,
                     base: file.base,
-                    path: file.base + filename + '.css',
+                    path: path.join(file.base, filename) + '.css',
                     relative: filename + '.css',
                     contents: new Buffer(css)
                 })
