@@ -10,11 +10,11 @@ describe('gulp-component', function () {
         it('should output the built script', function (done) {
             testStream(component(), [
                 function (file) {
-                    file.path.should.equal('./test/fixture/build.js')
+                    file.path.should.equal('test/fixture/build.js')
                     shouldBeJS(file)
                 },
                 function (file) {
-                    file.path.should.equal('./test/fixture/build.css')
+                    file.path.should.equal('test/fixture/build.css')
                     shouldBeCSS(file)
                 }
             ], done)
@@ -25,10 +25,10 @@ describe('gulp-component', function () {
                 name: 'custom'
             }), [
                 function (file) {
-                    file.path.should.equal('./test/fixture/custom.js')
+                    file.path.should.equal('test/fixture/custom.js')
                 },
                 function (file) {
-                    file.path.should.equal('./test/fixture/custom.css')
+                    file.path.should.equal('test/fixture/custom.css')
                 }
             ], done)
         })
@@ -38,7 +38,7 @@ describe('gulp-component', function () {
                 only: 'scripts'
             }), [
                 function (file) {
-                    file.path.should.equal('./test/fixture/build.js')
+                    file.path.should.equal('test/fixture/build.js')
                     shouldBeJS(file)
                 }
             ], next)
@@ -47,7 +47,7 @@ describe('gulp-component', function () {
                     only: ['styles']
                 }), [
                     function (file) {
-                        file.path.should.equal('./test/fixture/build.css')
+                        file.path.should.equal('test/fixture/build.css')
                         shouldBeCSS(file)
                     }
                 ], done)
